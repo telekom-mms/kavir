@@ -1,0 +1,22 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: kavir
+  namespace: "{{ .Values.namespace }}"
+rules:
+- apiGroups:
+  - "apps"
+  resources:
+  - 'deployments'
+  - 'replicasets'
+  - 'statefulsets'
+  - 'daemonsets'
+  - 'jobs'
+  - 'cronjobs'
+  - 'replicationcontrollers'
+  verbs:
+  - get
+  - list
+  - watch
+...

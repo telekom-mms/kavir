@@ -1,0 +1,21 @@
+---
+namespace: kavir
+schedule: "0 */1 * * *"
+clusterName: xxxxx
+containerRegistry:
+  image: ghcr.io/telekom-mms/kavir:1.0
+  dockerconfigjson: {"auths":{"ghcr.io":{"username":"xxxxx","password":"xxxxx","email":"kavir@acme.de","auth":"xxxxx"}}}
+git:
+  repoUrl: https://git.acme.de/repo.git
+  projectAccessToken: xxxxx
+  userName: kavir
+  userEmail: kavir@acme.de
+reportScope:
+  deployments: true
+  replicasets: false
+  statefulsets: true
+  daemonsets: true
+  jobs: false
+  cronjobs: false
+  replicationcontrollers: false
+...

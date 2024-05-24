@@ -9,3 +9,7 @@ To achieve this goal, kavir relies on three components:
 ## container image
 
 The container is based on [bitnamis kubectl container](https://github.com/bitnami/containers/tree/main/bitnami/kubectl) published under the [Apache2 License](https://www.apache.org/licenses/LICENSE-2.0). It uses a bash file which gathers information via `kubectl` and commits them as csv files to the predefined git repository. Look inside the `docker` folder to read more about it and how to use it.
+
+## helm chart
+
+The helm chart uses the container image described above to create a [kubernetes cronjob](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) inside the kubernetes cluster which periodically updates the csv files in the predefined git repository. Look inside the `helm` folder to read more about it and how to use it.

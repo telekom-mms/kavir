@@ -1,0 +1,51 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: kavir
+  namespace: "{{ .Values.namespace }}"
+spec:
+  schedule: "{{ .Values.schedule }}"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: kavir
+          imagePullSecrets:
+          - name: kavir-container-registry
+          containers:
+          - name: kavir
+            image: "{{ .Values.containerRegistry.image }}"
+            env:
+            - name: clusterName
+              value: "{{ .Values.clusterName }}"
+            - name: gitRepoUrl
+              value: "{{ .Values.git.repoUrl }}"
+            - name: gitProjectAccessToken
+              valueFrom:
+                secretKeyRef:
+                  name: kavir-git-project-access-token
+                  key: token
+            - name: gitUserName
+              value: "{{ .Values.git.userName }}"
+            - name: gitUserEmail
+              value: "{{ .Values.git.userEmail }}"
+            - name: reportDeployments
+              value: "{{ .Values.reportScope.deployments }}"
+            - name: reportReplicasets
+              value: "{{ .Values.reportScope.replicasets }}"
+            - name: reportStatefulsets
+              value: "{{ .Values.reportScope.statefulsets }}"
+            - name: reportDaemonsets
+              value: "{{ .Values.reportScope.daemonsets }}"
+            - name: reportJobs
+              value: "{{ .Values.reportScope.jobs }}"
+            - name: reportCronjobs
+              value: "{{ .Values.reportScope.cronjobs }}"
+            - name: reportReplicationcontrollers
+              value: "{{ .Values.reportScope.replicationcontrollers }}"
+            securityContext:
+              runAsNonRoot: true
+              allowPrivilegeEscalation: false
+          restartPolicy: OnFailure
+...
