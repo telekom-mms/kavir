@@ -13,3 +13,7 @@ The container is based on [bitnamis kubectl container](https://github.com/bitnam
 ## helm chart
 
 The helm chart uses the container image described above to create a [kubernetes cronjob](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) inside the kubernetes cluster which periodically updates the csv files in the predefined git repository. Look inside the `helm` folder to read more about it and how to use it.
+
+## html-report-builder
+
+The html-report-builder is a python script that uses the csv files from the git repository to build a single page html report file. Look inside the `html-report-builder` folder to read more about it and how to use it.

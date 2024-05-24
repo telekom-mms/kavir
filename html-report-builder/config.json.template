@@ -1,0 +1,12 @@
+{
+    "reportName" : "Kubernetes Application Version Report",
+    "paths": {
+        "srcDir": "/path/to/src/dir",
+        "styleFile": "./style.css",
+        "outDir" : "/path/to/out/dir"
+    },
+    "menu": {
+        "enabled": true,
+        "linkBasePath": "."
+    }
+}
