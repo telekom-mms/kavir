@@ -1,4 +1,6 @@
 #!/bin/bash
+# kavir - docker
+# version: 1.0.1
 
 declare -A reportScope
 reportScope=(
@@ -33,7 +35,7 @@ for resource in "${!reportScope[@]}";do
     # sort content of the second coloumn (images) since it might contain multiple entries (space separated)
     while read line; do
       coloumn1=$(echo $line | awk -F',' '{print $1}')
-      coloumn2=$(echo $line | awk -F',' '{print $2}' | tr ' ' '\n' | sort | tr '\n' ' ')
+      coloumn2=$(echo $line | awk -F',' '{print $2}' | tr ' ' '\n' | sort | tr '\n' ' ' | xargs)
       echo "$coloumn1,$coloumn2" >> "$resource.csv"
     done <"_$resource.csv"
   else

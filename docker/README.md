@@ -23,4 +23,4 @@ The container requires several environment variables. The `values.yaml` of the h
 
 ## releases
 
-Check the releases of this repository to view the releases of the container.
+Check the packages of this repository to view the releases of the container.
