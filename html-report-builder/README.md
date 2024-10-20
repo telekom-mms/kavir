@@ -22,6 +22,12 @@ The html-report-builder is a python script that uses the csv files from the git 
   * scopes: read_repository
 * create `config.json` from `config.json.template`
   * configure `config.json`
-* run `pip install -r requirements.txt`
-* run `main.py -c config.json -n <clusterName> [-v]`
+* run `pip3 install -r requirements.txt`
+* run `python3 main.py -c config.json -n <clusterName> [-v]`
   * run `python3 main.py -h` for further information
+
+## html report file preview
+
+A single page html report file could look like this:
+
+<img src= "./images/preview.png" alt="example html report file" style="border: 2px solid black;">
