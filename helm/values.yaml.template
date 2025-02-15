@@ -4,7 +4,7 @@ schedule: "0 */1 * * *"
 clusterName: xxxxx
 containerRegistry:
   image: ghcr.io/telekom-mms/kavir:1.0.1
-  dockerconfigjson: {"auths":{"ghcr.io":{"username":"xxxxx","password":"xxxxx","email":"kavir@acme.de","auth":"xxxxx"}}}
+  dockerconfigjson: '{"auths":{"ghcr.io":{"username":"xxxxx","password":"xxxxx","email":"kavir@acme.de","auth":"xxxxx"}}}'
 git:
   repoUrl: https://git.acme.de/repo.git
   projectAccessToken: xxxxx
