@@ -12,6 +12,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Added `xargs` to trim a trailing whitespace from the lines in the csv files
   * The trailing whitespace resulted in a bug when using the `html-report-builder`
 
-## 1.0
+## 1.0.0
 
 Initial version

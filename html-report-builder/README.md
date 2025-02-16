@@ -30,4 +30,4 @@ The html-report-builder is a python script that uses the csv files from the git 
 
 A single page html report file could look like this:
 
-<img src= "./images/preview.png" alt="example html report file" style="border: 2px solid black;">
+<img src="./images/preview.png" alt="example html report file" style="border: 2px solid black;">

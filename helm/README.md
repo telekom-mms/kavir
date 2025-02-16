@@ -69,5 +69,5 @@ my-cronjob,container-registry.acme.de/cronjobs/my-cronjob:1.0.0
 
 In addition you may check if your git hosting service supports the rendering of csv files. This way you can have a look at the csv files ready rendered without further ado.
 
-* [Github csv rendering](https://docs.github.com/en/repositories/working-with-files/using-files/working-with-non-code-files#rendering-csv-and-tsv-data)
-* [Gitlab csv rendering](https://docs.gitlab.com/ee/user/project/repository/files/csv.html)
+* [GitHub csv rendering](https://docs.github.com/en/repositories/working-with-files/using-files/working-with-non-code-files#rendering-csv-and-tsv-data)
+* [GitLab csv rendering](https://docs.gitlab.com/ee/user/project/repository/files/csv.html)

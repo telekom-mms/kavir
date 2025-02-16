@@ -20,9 +20,6 @@ rules:
     - 'replicasets'
     - 'statefulsets'
     - 'daemonsets'
-    - 'jobs'
-    - 'cronjobs'
-    - 'replicationcontrollers'
   verbs:
     - get
     - list
