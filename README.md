@@ -1,6 +1,6 @@
 # kavir - **K**ubernetes **A**pplication **V**ers**I**on **R**eporter
 
-kavir forwards information about applications in a kubernetes cluster to a git repository. This way software and stakeholders that do not have access to the kubernetes cluster can still see the image names and versions that are used by the applications in the cluster.
+kavir forwards information about applications in a kubernetes cluster to a git repository. This way software and stakeholders without access to the kubernetes cluster can still see the image names and versions that are used by the applications in the cluster.
 
 kavir can observe all [kubernetes workload resources](https://kubernetes.io/docs/concepts/workloads/controllers/).
 

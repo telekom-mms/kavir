@@ -6,17 +6,31 @@ metadata:
   namespace: "{{ .Values.namespace }}"
 rules:
 - apiGroups:
+  - ""
+  resources:
+    - 'replicationcontrollers'
+  verbs:
+    - get
+    - list
+    - watch
+- apiGroups:
   - "apps"
   resources:
-  - 'deployments'
-  - 'replicasets'
-  - 'statefulsets'
-  - 'daemonsets'
-  - 'jobs'
-  - 'cronjobs'
-  - 'replicationcontrollers'
+    - 'deployments'
+    - 'replicasets'
+    - 'statefulsets'
+    - 'daemonsets'
   verbs:
-  - get
-  - list
-  - watch
+    - get
+    - list
+    - watch
+- apiGroups:
+  - "batch"
+  resources:
+    - 'jobs'
+    - 'cronjobs'
+  verbs:
+    - get
+    - list
+    - watch
 ...
