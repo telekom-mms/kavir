@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * The clusterrole now grants access to the resources `replicationcontrollers`, `jobs` and `cronjobs` like intended.
   * Previously the clusterrole incorrectly granted the verbs for `replicationcontrollers` in the apiGroup `"apps"` instead of `""`.
   * Previously the clusterrole incorrectly granted the verbs for `jobs` and `cronjobs` in the apiGroup `"apps"` instead of `"batch"`.
+* Moved documentation from `helm/` to `docker/`
 
 ## 1.0.0
 
