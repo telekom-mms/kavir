@@ -35,39 +35,3 @@ The helm chart uses the container image described in the `docker` folder to crea
 * create `values.yaml` from `values.yaml.template`
   * configure `values.yaml`
 * run `helm install kavir kavir/helm`
-
-## git repository preview
-
-kavir creates the following structure in the git repository specified by `repoUrl`:
-
-```text
-├── clusterName1
-│   ├── cronjobs.csv
-│   ├── daemonsets.csv
-│   ├── deployments.csv
-│   ├── jobs.csv
-│   ├── replicasets.csv
-│   ├── replicationcontrollers.csv
-│   ├── statefulsets.csv
-├── clusterName2
-│   ├── cronjobs.csv
-│   ├── daemonsets.csv
-│   ├── deployments.csv
-│   ├── jobs.csv
-│   ├── replicasets.csv
-│   ├── replicationcontrollers.csv
-│   ├── statefulsets.csv
-```
-
-A `cronjobs.csv` could look like this:
-
-```csv
-Name,Image:Tag
-kavir,ghcr.io/telekom-mms/kavir:1.0.1
-my-cronjob,container-registry.acme.de/cronjobs/my-cronjob:1.0.0
-```
-
-In addition you may check if your git hosting service supports the rendering of csv files. This way you can have a look at the csv files ready rendered without further ado.
-
-* [Github csv rendering](https://docs.github.com/en/repositories/working-with-files/using-files/working-with-non-code-files#rendering-csv-and-tsv-data)
-* [Gitlab csv rendering](https://docs.gitlab.com/ee/user/project/repository/files/csv.html)
