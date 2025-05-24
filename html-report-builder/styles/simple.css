@@ -33,6 +33,11 @@ a {
     padding-left: 50px;
 }
 
+.active {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
 a:hover {
     color: darkgray;
 }
@@ -58,15 +63,15 @@ thead {
 }
 
 .table-header-name {
-    width: 100vw;
+    width: 25vw;
 }
 
 .table-header-image {
-    width: 100vw;
+    width: 50vw;
 }
 
 .table-header-tag-version {
-    width: 100vw;
+    width: 25vw;
 }
 
 td {
