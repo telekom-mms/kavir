@@ -1,9 +1,9 @@
 {
     "reportName" : "Kubernetes Application Version Report",
     "paths": {
-        "srcDir": "/path/to/src/dir",
-        "styleFile": "./style.css",
-        "outDir" : "/path/to/out/dir"
+        "srcDir": "./docker/examples",
+        "styleFile": "./html-report-builder/styles/simple.css",
+        "outDir" : "./html-report-builder/examples"
     },
     "menu": {
         "enabled": true,

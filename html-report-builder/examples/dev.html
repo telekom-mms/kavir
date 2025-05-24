@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kubernetes Application Version Report</title>
+    <style>body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-bottom: 50px;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+/* nav-bar start */
+.header {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    color: black;
+    background-color: lightgray;
+    padding: 0;
+    margin: 0;
+    margin-top: 21.44px;
+}
+
+.headline {
+    padding-left: 1vw;
+}
+
+h1 {
+    margin: 0;
+}
+
+a {
+    display: block;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    padding-left: 50px;
+}
+
+a:hover {
+    color: darkgray;
+}
+/* nav-bar end */
+
+h2 {
+    padding-left: 1vw;
+}
+
+p {
+    padding-left: 1vw;
+}
+
+/* table start */
+table {
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+thead {
+    font-weight: bold;
+    background-color: #F0F0F0;
+}
+
+.table-header-name {
+    width: 100vw;
+}
+
+.table-header-image {
+    width: 100vw;
+}
+
+.table-header-tag-version {
+    width: 100vw;
+}
+
+td {
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+tr:nth-child(even) {
+    background-color: #F0F0F0;
+}
+/* table end */
+</style>
+  </head>
+  <body>
+    <div class="header">
+      <h1 class="headline">Kubernetes Application Version Report (dev)</h1>
+      <a class="active" href="./dev.html">dev</a>
+      <a href="./prod.html">prod</a>
+    </div>
+    <h2>deployments</h2>
+    <table>
+      <thead>
+        <td class="table-header-name">Name</td>
+        <td class="table-header-image">Image</td>
+        <td class="table-header-tag-version">Tag/Version</td>
+      </thead>
+      <tbody>
+        <tr>
+          <td>cmcc-operator</td>
+          <td style="white-space:pre-line;">ghcr.io/telekom-mms/cmcc-operator/cmcc-operator<br></td>
+          <td style="white-space:pre-line;">v1.14.15<br></td>
+        </tr>
+        <tr>
+          <td>gitea</td>
+          <td style="white-space:pre-line;">docker.io/bitnami/gitea<br></td>
+          <td style="white-space:pre-line;">1.22.3-debian-12-r0<br></td>
+        </tr>
+        <tr>
+          <td>my-deployment</td>
+          <td style="white-space:pre-line;">container-registry.acme.de/deployments/my-deployment<br></td>
+          <td style="white-space:pre-line;">0.4.2<br></td>
+        </tr>
+        <tr>
+          <td>trivy-dojo-operator</td>
+          <td style="white-space:pre-line;">ghcr.io/telekom-mms/docker-trivy-dojo-operator<br></td>
+          <td style="white-space:pre-line;">0.7.2<br></td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>replicasets</h2>
+    <p>not in scope of the report</p>
+    <h2>statefulsets</h2>
+    <p>in scope of the report; but there are no statefulsets to report about</p>
+    <h2>daemonsets</h2>
+    <p>not in scope of the report</p>
+    <h2>jobs</h2>
+    <p>not in scope of the report</p>
+    <h2>cronjobs</h2>
+    <table>
+      <thead>
+        <td class="table-header-name">Name</td>
+        <td class="table-header-image">Image</td>
+        <td class="table-header-tag-version">Tag/Version</td>
+      </thead>
+      <tbody>
+        <tr>
+          <td>kavir</td>
+          <td style="white-space:pre-line;">ghcr.io/telekom-mms/kavir<br></td>
+          <td style="white-space:pre-line;">1.0.1<br></td>
+        </tr>
+        <tr>
+          <td>my-cronjob</td>
+          <td style="white-space:pre-line;">container-registry.acme.de/cronjobs/my-cronjob<br></td>
+          <td style="white-space:pre-line;">1.0.0<br></td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>replicationcontrollers</h2>
+    <p>not in scope of the report</p>
+  </body>
+</html>

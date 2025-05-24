@@ -1,13 +1,16 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-bottom: 50px;
+    padding-left: 1vw;
+    padding-right: 1vw;
 }
 
 /* nav-bar start */
-ul {
+.header {
     list-style: none;
     display: flex;
     align-items: center;
-    color: #e80474;
+    color: black;
     background-color: lightgray;
     padding: 0;
     margin: 0;
@@ -15,66 +18,64 @@ ul {
 }
 
 .headline {
-    padding-left: 20px;
+    padding-left: 1vw;
 }
 
 h1 {
     margin: 0;
 }
 
-li {
-    padding-left: 50px;
-}
-
-li a {
+a {
     display: block;
     color: black;
     text-align: center;
     text-decoration: none;
+    padding-left: 50px;
 }
 
-li a:hover {
-    color: #e80474;
+a:hover {
+    color: darkgray;
 }
 /* nav-bar end */
 
 h2 {
-    padding-left: 20px;
+    padding-left: 1vw;
 }
 
-div {
-    padding-left: 20px;
+p {
+    padding-left: 1vw;
 }
 
 /* table start */
 table {
-    padding-left: 20px;
+    padding-left: 1vw;
+    padding-right: 1vw;
 }
 
-.table-header {
+thead {
     font-weight: bold;
+    background-color: #F0F0F0;
 }
 
 .table-header-name {
-    width: 20vw;
+    width: 100vw;
 }
 
 .table-header-image {
-    width: 40vw;
+    width: 100vw;
 }
 
 .table-header-tag-version {
-    width: 20vw;
+    width: 100vw;
 }
 
 td {
     text-align: left;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-right: 20px;
 }
 
-tr:nth-child(odd) {
+tr:nth-child(even) {
     background-color: #F0F0F0;
 }
 /* table end */
