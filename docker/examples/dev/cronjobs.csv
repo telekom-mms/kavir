@@ -1,0 +1,3 @@
+Name,Image:Tag
+kavir,ghcr.io/telekom-mms/kavir:1.0.1
+my-cronjob,container-registry.acme.de/cronjobs/my-cronjob:1.0.0

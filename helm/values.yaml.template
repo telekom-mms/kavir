@@ -1,7 +1,7 @@
 ---
 namespace: kavir
 schedule: "0 */1 * * *"
-clusterName: xxxxx
+clusterName: dev
 containerRegistry:
   image: ghcr.io/telekom-mms/kavir:1.0.1
   dockerconfigjson: '{"auths":{"ghcr.io":{"username":"xxxxx","password":"xxxxx","email":"kavir@acme.de","auth":"xxxxx"}}}'
