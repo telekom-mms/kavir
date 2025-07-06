@@ -1,5 +1,4 @@
 ---
-namespace: kavir
 schedule: "0 */1 * * *"
 clusterName: dev
 containerRegistry:
@@ -10,12 +9,14 @@ git:
   projectAccessToken: xxxxx
   userName: kavir
   userEmail: kavir@acme.de
-reportScope:
-  deployments: true
-  replicasets: false
-  statefulsets: true
-  daemonsets: true
-  jobs: false
-  cronjobs: false
-  replicationcontrollers: false
+report:
+  namespaces: false
+  scope:
+    deployments: true
+    replicasets: false
+    statefulsets: true
+    daemonsets: true
+    jobs: false
+    cronjobs: false
+    replicationcontrollers: false
 ...

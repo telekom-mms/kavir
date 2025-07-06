@@ -1,9 +1,9 @@
 ---
 apiVersion: v2
 name: kavir
-version: 1.0.1
+version: 2.0.0
 description: kavir forwards information about applications in a kubernetes cluster to a git repository. This way software and stakeholders without access to the kubernetes cluster can still see the image names and versions that are used by the applications in the cluster.
 type: application
 home: https://github.com/telekom-mms/kavir
-appVersion: "1.0.1"
+appVersion: "1.1.0"
 ...

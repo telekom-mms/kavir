@@ -1,5 +1,5 @@
-Name,Image:Tag
-cmcc-operator,ghcr.io/telekom-mms/cmcc-operator/cmcc-operator:v1.14.15
-gitea,docker.io/bitnami/gitea:1.22.3-debian-12-r0
-my-deployment,container-registry.acme.de/deployments/my-deployment:0.4.2
-trivy-dojo-operator,ghcr.io/telekom-mms/docker-trivy-dojo-operator:0.7.2
+Name,Namespace,Image:Tag
+cmcc-operator,app,ghcr.io/telekom-mms/cmcc-operator/cmcc-operator:v1.14.15
+gitea,gitea,docker.io/bitnami/gitea:1.22.3-debian-12-r0
+my-deployment,app,container-registry.acme.de/deployments/my-deployment:0.4.2
+trivy-dojo-operator,monitoring,ghcr.io/telekom-mms/docker-trivy-dojo-operator:0.7.2

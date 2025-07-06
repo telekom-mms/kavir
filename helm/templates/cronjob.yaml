@@ -3,7 +3,7 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: kavir
-  namespace: "{{ .Values.namespace }}"
+  namespace: "{{ .Release.Namespace }}"
 spec:
   schedule: "{{ .Values.schedule }}"
   jobTemplate:
@@ -30,20 +30,22 @@ spec:
               value: "{{ .Values.git.userName }}"
             - name: gitUserEmail
               value: "{{ .Values.git.userEmail }}"
+            - name: reportNamespaces
+              value: "{{ .Values.report.namespaces }}"
             - name: reportDeployments
-              value: "{{ .Values.reportScope.deployments }}"
+              value: "{{ .Values.report.scope.deployments }}"
             - name: reportReplicasets
-              value: "{{ .Values.reportScope.replicasets }}"
+              value: "{{ .Values.report.scope.replicasets }}"
             - name: reportStatefulsets
-              value: "{{ .Values.reportScope.statefulsets }}"
+              value: "{{ .Values.report.scope.statefulsets }}"
             - name: reportDaemonsets
-              value: "{{ .Values.reportScope.daemonsets }}"
+              value: "{{ .Values.report.scope.daemonsets }}"
             - name: reportJobs
-              value: "{{ .Values.reportScope.jobs }}"
+              value: "{{ .Values.report.scope.jobs }}"
             - name: reportCronjobs
-              value: "{{ .Values.reportScope.cronjobs }}"
+              value: "{{ .Values.report.scope.cronjobs }}"
             - name: reportReplicationcontrollers
-              value: "{{ .Values.reportScope.replicationcontrollers }}"
+              value: "{{ .Values.report.scope.replicationcontrollers }}"
             securityContext:
               runAsNonRoot: true
               allowPrivilegeEscalation: false

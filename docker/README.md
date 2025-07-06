@@ -13,6 +13,7 @@ The container requires several environment variables. Since kavir is meant to be
 | gitProjectAccessToken        | the git project access token kavir uses to access the git repository (role: Maintainer, scopes: write_repository) |
 | gitUserName                  | the username that is shown for the commits made by kavir                                      |
 | gitUserEmail                 | the email that is shown for the commits made by kavir                                         |
+| reportNamespaces             | determines whether kavir includes namespaces in the csv reports                               |
 | reportDeployments            | determines whether kavir gathers information on deployments                                   |
 | reportReplicasets            | determines whether kavir gathers information on replicasets                                   |
 | reportStatefulsets           | determines whether kavir gathers information on statefulsets                                  |
@@ -54,6 +55,14 @@ A `cronjobs.csv` could look like this:
 Name,Image:Tag
 kavir,ghcr.io/telekom-mms/kavir:1.0.1
 my-cronjob,container-registry.acme.de/cronjobs/my-cronjob:1.0.0
+```
+
+If `reportNamespaces` is set to `true`, the `cronjobs.csv` will look like this:
+
+```csv
+Name,Namespace,Image:Tag
+kavir,monitoring,ghcr.io/telekom-mms/kavir:1.0.1
+my-cronjob,app,container-registry.acme.de/cronjobs/my-cronjob:1.0.0
 ```
 
 If cronjobs are in the scope of the report (`reportCronjobs=true`) but there are no cronjobs to report about, the `cronjobs.csv` will look like this:

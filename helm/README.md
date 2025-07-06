@@ -6,7 +6,6 @@ The helm chart uses the container image described in the `docker` folder to crea
 
 | variable               | description                                                                                   |
 | ---------------------- | --------------------------------------------------------------------------------------------- |
-| namespace              | the kubernetes namespace for all the resources that the helm chart installs                   |
 | schedule               | the kubernetes cronjob schedule                                                               |
 | clusterName            | the name of the folder in the git repository which contains all the csv files for the cluster |
 | **containerRegistry**  |                                                                                               |
@@ -14,10 +13,12 @@ The helm chart uses the container image described in the `docker` folder to crea
 | dockerconfigjson       | the [.dockerconfigjson](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/) to access the container image. If you want to use the default image, provide a dockerconfigjson to pull from the ghcr |
 | **git**                |                                                                                               |
 | repoUrl                | the git repository url kavir forwards the information to                                      |
-| projectAccessToken     | the git project access token kavir uses to access the git repository                          |
+| projectAccessToken     | the git project access token kavir uses to access the git repository (role: Maintainer, scopes: write_repository)                         |
 | userName               | the username that is shown for the commits made by kavir                                      |
 | userEmail              | the email that is shown for the commits made by kavir                                         |
-| **reportScope**        |                                                                                               |
+| **report**             |                                                                                               |
+| namespaces             | determines whether kavir includes namespaces in the csv reports                               |
+| **report.scope**       |                                                                                               |
 | deployments            | determines whether kavir gathers information on deployments                                   |
 | replicasets            | determines whether kavir gathers information on replicasets                                   |
 | statefulsets           | determines whether kavir gathers information on statefulsets                                  |
@@ -29,9 +30,9 @@ The helm chart uses the container image described in the `docker` folder to crea
 ## Usage
 
 * create a git repository to which the information is committed
-* create a project access token for this git repository
-  * role: Maintainer
-  * scopes: write_repository
+  * create a project access token for this git repository
+    * role: Maintainer
+    * scopes: write_repository
 * create `values.yaml` from `values.yaml.template`
   * configure `values.yaml`
-* run `helm install kavir kavir/helm`
+* run `helm install kavir ./helm --namespace kavir --create-namespace`
