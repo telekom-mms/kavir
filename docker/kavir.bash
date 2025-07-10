@@ -12,6 +12,7 @@ reportScope=(
   ["cronjobs"]="$reportCronjobs"
   ["replicationcontrollers"]="$reportReplicationcontrollers"
 )
+reportNamespaces=${reportNamespaces:-false}
 
 if [ "$reportNamespaces" = true ]; then
   csvReportHeader="Name,Namespace,Image:Tag"
