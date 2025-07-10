@@ -2,12 +2,12 @@
 
 ## dev.html
 
-* with namespaces: true
+* reportNamespaces: true
 * template file used: simple.html.j2
 * style file used: simple.css
 
 ## prod.html
 
-* with namespaces: false
+* reportNamespaces: false
 * template file used: simple.html.j2
 * style file used: simple.css
