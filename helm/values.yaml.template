@@ -1,6 +1,8 @@
 ---
 namespace: kavir
 schedule: "0 */1 * * *"
+successfulJobsHistoryLimit: 1
+failedJobsHistoryLimit: 1
 clusterName: dev
 containerRegistry:
   image: ghcr.io/telekom-mms/kavir:1.0.1
