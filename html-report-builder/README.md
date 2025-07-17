@@ -19,19 +19,42 @@ The html-report-builder is a python script that uses the csv files to build a ht
 
 * create `config.json` from `config.json.template`
   * configure `config.json`
-* run `pip3 install -r requirements.txt`
-* run `python3 main.py -c config.json -n <clusterName> [-v]`
-  * run `python3 main.py -h` for further information
+* run `pip3 install -r ./requirements.txt`
+* run `python3 ./main.py -c ./config.json -n <clusterName> [-v]`
+  * run `python3 ./main.py -h` for further information
 
 The html-report-builder will use the folders inside the `srcDir` to build the report. Make sure `srcDir` contains only folders you want to have listed in the menu.
 
 You can run the html-report-builder with the example files in this repository:
 
 ```bash
-cd kavir
-python3 ./html-report-builder/main.py -c ./html-report-builder/config.json -n dev
+python3 ./html-report-builder/main.py -c ./html-report-builder/config.json.template -n dev
+python3 ./html-report-builder/main.py -c ./html-report-builder/config.json.template -n prod
 ```
 
 ## html report preview
 
 Check out the `examples` folder for an example.
+
+## template variables
+
+The following variables are passed to the template and can therefore be used by Jinja2 inside the template. The variables are specified in jq filter syntax.
+
+| variable                                               | type                   | description                                                                                             |
+| ------------------------------------------------------ | ---------------------- | ------------------------------------------------------------------------------------------------------- |
+| clusterName                                            | String                 | the name of the cluster                                                                                 |
+| reportName                                             | String                 | the name of the report                                                                                  |
+| style                                                  | String                 | the content of the style file                                                                           |
+| menuEnabled                                            | Boolean                | indicates whether the user wants to display a menu in the report                                        |
+| clusters                                               | List of strings        | the names of all available clusters. (Can be used for a menu.)                                          |
+| menuLinkBasePath                                       | String                 | a link base path that can be used to build the href of links in the menu                                |
+| workloadResourceReports                                | List of dictionairies  | the workload resource reports                                                                           |
+| workloadResourceReports[].name                         | String                 | the name of the kubernetes workload resource                                                            |
+| workloadResourceReports[].nodata                       | String                 | when present, there is no data for the kubernetes workload resource. The value contains the reason why. |
+| workloadResourceReports[].data                         | List of dictionairies  | when present, it contains all workloads for the kubernetes workload resource                            |
+| workloadResourceReports[].data[].name                  | String                 | the name of the workload                                                                                |
+| workloadResourceReports[].data[].namespace             | String                 | when present, it contains the namespace of the workload                                                 |
+| workloadResourceReports[].data[].imageAndTagPairs      | List of lists          | the list of image and tag pairs of the workload                                                         |
+| workloadResourceReports[].data[].imageAndTagPairs[][0] | String                 | the image                                                                                               |
+| workloadResourceReports[].data[].imageAndTagPairs[][1] | String                 | the image tag                                                                                           |
+| workloadResourceReports[].namespaces                   | Boolean                | when present, indicates whether namespaces are included in the report                                   |
