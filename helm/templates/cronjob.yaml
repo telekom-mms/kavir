@@ -6,6 +6,8 @@ metadata:
   namespace: "{{ .Values.namespace }}"
 spec:
   schedule: "{{ .Values.schedule }}"
+  successfulJobsHistoryLimit: "{{ .Values.successfulJobsHistoryLimit }}"
+  failedJobsHistoryLimit: "{{ .Values.failedJobsHistoryLimit }}
   jobTemplate:
     spec:
       template:
