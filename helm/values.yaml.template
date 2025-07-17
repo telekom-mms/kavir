@@ -1,8 +1,8 @@
 ---
 namespace: kavir
 schedule: "0 */1 * * *"
-successfulJobsHistoryLimit: 1 # This field tells Kubernetes how many successful (completed) Jobs to keep.
-failedJobsHistoryLimit: 1 # This field tells Kubernetes how many failed Jobs to keep.
+successfulJobsHistoryLimit: 1
+failedJobsHistoryLimit: 1
 clusterName: dev
 containerRegistry:
   image: ghcr.io/telekom-mms/kavir:1.0.1
