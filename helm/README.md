@@ -9,8 +9,8 @@ The helm chart uses the container image described in the `docker` folder to crea
 | clusterName                | the name of the folder in the git repository which contains all the csv files for the cluster |
 | **cronjob**                | the kubernetes cronjob schedule                                                               |
 | schedule                   | the kubernetes cronjob schedule                                                               |
-| successfulJobsHistoryLimit | This field tells Kubernetes how many successful (completed) Jobs to keep. For example, if you set it to 3, only the three most recent successful Jobs will be retained. |
-| failedJobsHistoryLimit     | This field tells Kubernetes how many failed Jobs to keep. For example, if you set it to 1, only the most recent failed Job will remain. |
+| successfulJobsHistoryLimit | This field tells kubernetes how many successful (completed) jobs to keep. For example, if you set it to 3, only the three most recent successful jobs will be retained. |
+| failedJobsHistoryLimit     | This field tells kubernetes how many failed jobs to keep. For example, if you set it to 1, only the most recent failed job will remain. |
 | **containerRegistry**      |                                                                                               |
 | image                      | the name of the image in the container registry. The default value refers to the image provided by this repository via [ghcr](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry) |
 | dockerconfigjson           | the [.dockerconfigjson](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/) to access the container image. If you want to use the default image, provide a dockerconfigjson to pull from the ghcr |
