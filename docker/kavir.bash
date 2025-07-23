@@ -1,6 +1,6 @@
 #!/bin/bash
 # kavir - docker
-# version: 1.0.1
+# version: 1.1.0
 
 declare -A reportScope
 reportScope=(
@@ -12,37 +12,56 @@ reportScope=(
   ["cronjobs"]="$reportCronjobs"
   ["replicationcontrollers"]="$reportReplicationcontrollers"
 )
+reportNamespaces=${reportNamespaces:-false}
+
+if [ "$reportNamespaces" = true ]; then
+  csvReportHeader="Name,Namespace,Image:Tag"
+  kubectlJsonpath='{range .items[*]}{@.metadata.name}{","}{@.metadata.namespace}{","}{..image}{"\n"}{end}'
+else
+  csvReportHeader="Name,Image:Tag"
+  kubectlJsonpath='{range .items[*]}{@.metadata.name}{","}{..image}{"\n"}{end}'
+fi
 
 cd /tmp
 
-gitRepoUrl=$(sed -e "s^//^//MadebyI-Am-hehu:$gitProjectAccessToken@^" <<< "$gitRepoUrl")
-git clone $gitRepoUrl
+gitCloneUrl=$(sed -e "s^//^//MadebyI-Am-hehu:$gitProjectAccessToken@^" <<< "$gitRepoUrl")
+git clone $gitCloneUrl
 cd $(basename $gitRepoUrl .git)
-git config user.name "$gitUserName"
-git config user.email "$gitUserEmail"
-
 if [ ! -d "$clusterName" ]; then
   mkdir "$clusterName"
 fi
 cd "$clusterName"
 
-for resource in "${!reportScope[@]}";do
-  if [ "${reportScope[$resource]}" = true ]; then
-    kubectl get $resource --all-namespaces -o jsonpath='{range .items[*]}{@.metadata.name}{","}{..image}{"\n"}{end}' >> "_$resource.csv"
-    # sort by first coloumn (name)
-    sort -k1 -n -t, "_$resource.csv" -o "_$resource.csv"
-    echo "Name,Image:Tag" > "$resource.csv"
-    # sort content of the second coloumn (images) since it might contain multiple entries (space separated)
+for workloadResource in "${!reportScope[@]}"; do
+  if [ "${reportScope[$workloadResource]}" = true ]; then
+    kubectl get $workloadResource --all-namespaces -o jsonpath="${kubectlJsonpath}" > "_$workloadResource.csv"
+    if [ "$reportNamespaces" = true ]; then
+      # sort report by first coloumn ("Name") and second coloumn ("Namespace")
+      sort -k1,1 -k2,2 -n -t, "_$workloadResource.csv" -o "_$workloadResource.csv"
+    else
+      # sort report by first coloumn ("Name")
+      sort -k1 -n -t, "_$workloadResource.csv" -o "_$workloadResource.csv"
+    fi
+    echo $csvReportHeader > "$workloadResource.csv"
     while read line; do
-      coloumn1=$(echo $line | awk -F',' '{print $1}')
-      coloumn2=$(echo $line | awk -F',' '{print $2}' | tr ' ' '\n' | sort | tr '\n' ' ' | xargs)
-      echo "$coloumn1,$coloumn2" >> "$resource.csv"
-    done <"_$resource.csv"
+      coloumnIndex=1
+      name=$(echo $line | awk -v i=$coloumnIndex -F',' '{print $i}')
+      ((coloumnIndex++))
+      if [ "$reportNamespaces" = true ]; then
+        namespace=$(echo $line | awk -v i=$coloumnIndex -F',' '{print $i}')
+        ((coloumnIndex++))
+      fi
+      # sort content of the coloumn "Image:Tag" since it might contain multiple entries (space separated)
+      image=$(echo $line | awk -v i=$coloumnIndex -F',' '{print $i}' | tr ' ' '\n' | sort | tr '\n' ' ' | xargs)
+      echo "$name,${namespace:+$namespace,}$image" >> "$workloadResource.csv"
+    done <"_$workloadResource.csv"
   else
-    echo "out of scope" > "$resource.csv"
+    echo "out of scope" > "$workloadResource.csv"
   fi
-  git add "$resource.csv"
+  git add "$workloadResource.csv"
 done
 
-git commit -m "Updated report for cluster $clusterName"
-git push $gitCredentialUrl
+git config user.name "$gitUserName"
+git config user.email "$gitUserEmail"
+git commit -m "Updated csv reports for cluster $clusterName"
+git push

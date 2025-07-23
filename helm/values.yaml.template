@@ -1,9 +1,9 @@
 ---
-namespace: kavir
-schedule: "0 */1 * * *"
-successfulJobsHistoryLimit: 1
-failedJobsHistoryLimit: 1
 clusterName: dev
+cronjob:
+  schedule: "0 */1 * * *"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
 containerRegistry:
   image: ghcr.io/telekom-mms/kavir:1.0.1
   dockerconfigjson: '{"auths":{"ghcr.io":{"username":"xxxxx","password":"xxxxx","email":"kavir@acme.de","auth":"xxxxx"}}}'
@@ -12,12 +12,14 @@ git:
   projectAccessToken: xxxxx
   userName: kavir
   userEmail: kavir@acme.de
-reportScope:
-  deployments: true
-  replicasets: false
-  statefulsets: true
-  daemonsets: true
-  jobs: false
-  cronjobs: false
-  replicationcontrollers: false
+report:
+  namespaces: false
+  scope:
+    deployments: true
+    replicasets: false
+    statefulsets: true
+    daemonsets: true
+    jobs: false
+    cronjobs: false
+    replicationcontrollers: false
 ...

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ reportName }}</title>
+    <style>
+{{ style|indent(6, True) }}
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1 class="headline">{{ reportName }} ({{ clusterName }})</h1>
+      {% if menuEnabled %}
+      {% for cluster in clusters -%}
+      <a{% if clusterName == cluster %} class="active"{% endif %} href="{{ menuLinkBasePath }}/{{ cluster }}.html">{{ cluster }}</a>
+      {% endfor -%}
+      {% endif -%}
+    </div>
+    {% for workloadResourceReport in workloadResourceReports -%}
+    <h2>{{ workloadResourceReport["name"] }}</h2>
+    {%- if workloadResourceReport["nodata"] is defined %}
+    <p>{{ workloadResourceReport["nodata"] }}</p>
+    {% else %}
+    <table>
+      <thead>
+        <td class="table-header-name">Name</td>
+        {% if workloadResourceReport["namespaces"] %}
+        <td class="table-header-namespace">Namespace</td>
+        {% endif -%}
+        <td class="table-header-image">Image</td>
+        <td class="table-header-tag-version">Tag/Version</td>
+      </thead>
+      <tbody>
+        {% for workload in workloadResourceReport["data"] -%}
+        <tr>
+          <td>{{ workload["name"] }}</td>
+          {% if workload["namespace"] is defined %}
+          <td>{{ workload["namespace"] }}</td>
+          {% endif -%}
+          <td>
+          {%- for imageAndTagPair in workload["imageAndTagPairs"] -%}
+          {{ imageAndTagPair[0] }}<br />
+          {%- endfor -%}
+          </td>
+          <td>
+          {%- for imageAndTagPair in workload["imageAndTagPairs"] -%}
+          {{ imageAndTagPair[1] }}<br />
+          {%- endfor -%}
+          </td>
+        </tr>
+        {% endfor -%}
+      </tbody>
+    </table>
+    {% endif -%}
+    {% endfor -%}
+  </body>
+<!--
+
+Built with love by
+$$$$$$\        $$$$$$\                        $$\                 $$\                 
+\_$$  _|      $$  __$$\                       $$ |                $$ |                
+  $$ |        $$ /  $$ |$$$$$$\$$$$\          $$$$$$$\   $$$$$$\  $$$$$$$\  $$\   $$\ 
+  $$ |$$$$$$\ $$$$$$$$ |$$  _$$  _$$\ $$$$$$\ $$  __$$\ $$  __$$\ $$  __$$\ $$ |  $$ |
+  $$ |\______|$$  __$$ |$$ / $$ / $$ |\______|$$ |  $$ |$$$$$$$$ |$$ |  $$ |$$ |  $$ |
+  $$ |        $$ |  $$ |$$ | $$ | $$ |        $$ |  $$ |$$   ____|$$ |  $$ |$$ |  $$ |
+$$$$$$\       $$ |  $$ |$$ | $$ | $$ |        $$ |  $$ |\$$$$$$$\ $$ |  $$ |\$$$$$$  |
+\______|      \__|  \__|\__| \__| \__|        \__|  \__| \_______|\__|  \__| \______/ 
+
+-->
+</html>
