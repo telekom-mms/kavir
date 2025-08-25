@@ -38,4 +38,4 @@ The helm chart uses the container image described in the `docker` folder to crea
     * scopes: write_repository
 * create `values.yaml` from `values.yaml.template`
   * configure `values.yaml`
-* run `helm install kavir ./helm --namespace kavir --create-namespace`
+* run `helm install kavir ./charts/kavir --namespace kavir --create-namespace`
