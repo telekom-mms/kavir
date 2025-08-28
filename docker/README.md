@@ -4,7 +4,7 @@ The container is based on [bitnamis kubectl container](https://github.com/bitnam
 
 ## environment variables
 
-The container requires several environment variables. Since kavir is meant to be run inside a kubernetes cluster it is recommended to use the helm chart to deploy kavir. The `values.yaml` of the helm chart contains all environment variables. Look inside the `helm` folder for further explanations.
+The container requires several environment variables. Since kavir is meant to be run inside a kubernetes cluster it is recommended to use the helm chart to deploy kavir. The `values.yaml` of the helm chart contains all environment variables. Look inside the `charts/kavir/` folder for further explanations.
 
 | variable                     | description                                                                                   |
 | ---------------------------- | --------------------------------------------------------------------------------------------- |

@@ -22,4 +22,3 @@ report:
     jobs: false
     cronjobs: false
     replicationcontrollers: false
-...
