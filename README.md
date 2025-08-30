@@ -4,9 +4,7 @@ kavir forwards information about applications in a kubernetes cluster to a git r
 
 kavir can observe all [kubernetes workload resources](https://kubernetes.io/docs/concepts/workloads/controllers/).
 
-To achieve this goal, kavir relies on three components:
-
-## container image
+## kavir - container image
 
 The container is based on [bitnamis kubectl container](https://github.com/bitnami/containers/tree/main/bitnami/kubectl) published under the [Apache2 License](https://www.apache.org/licenses/LICENSE-2.0). It uses a bash file which gathers information via `kubectl` and commits them as csv files to the predefined git repository. Look inside the `docker` folder to read more about it and how to use it.
 
@@ -16,4 +14,8 @@ The helm chart uses the container image described above to create a [kubernetes 
 
 ## html-report-builder
 
-The html-report-builder is a python script that uses the csv files from the git repository to build a single page html report file. Look inside the `html-report-builder` folder to read more about it and how to use it.
+The html-report-builder is a python script that uses the csv files to build a html report (static html file). Look inside the `html-report-builder` folder to read more about it and how to use it.
+
+## git-pages
+
+Pipeline templates to utilise the pipeline and pages features of a git hosting service in a convenient way to run kavirs html-report-builder. Look inside the `git-pages` folder to read more about it and how to use it.

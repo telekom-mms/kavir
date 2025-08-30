@@ -13,8 +13,8 @@
     },
     "paths": {
         "srcDir": "./docker/examples",
-        "templateFile": "./html-report-builder/templates/simple.html.j2",
-        "styleFile": "./html-report-builder/styles/simple.css",
+        "templateFile": "./html-report-builder/src/templates/simple.html.j2",
+        "styleFile": "./html-report-builder/src/styles/simple.css",
         "outDir": "./html-report-builder/examples"
     },
     "menu": {
