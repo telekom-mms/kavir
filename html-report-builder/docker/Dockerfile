@@ -11,8 +11,9 @@ LABEL org.opencontainers.image.authors="I-Am-hehu" \
     org.opencontainers.image.vendor="Deutsche Telekom MMS GmbH" \
     org.opencontainers.image.version="1.0.0"
 
-RUN apt-get update
-RUN apt-get install -y jq
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    jq \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /opt/kavir-html-report-builder
 RUN mkdir /etc/kavir-html-report-builder
