@@ -10,21 +10,21 @@ The container
 | variable           | equivalent in kavirs html-report-builder `config.json` | default value                                                                          |
 | ------------------ | ------------------------------------------------------ | -------------------------------------------------------------------------------------- |
 | verbose            |                                                        | `true`                                                                                 |
-| report_name        | report.name                                            | `Kubernetes Application Version Report`                                                |
-| report_scope       | report.scope                                           | `deployments replicasets statefulsets daemonsets jobs cronjobs replicationcontrollers` |
-| paths_templateFile | paths.templateFile                                     | `/etc/kavir/html-report-builder/templates/simple.html.j2`                              |
-| paths_styleFile    | paths.styleFile                                        | `/etc/kavir/html-report-builder/styles/simple.css`                                     |
-| menu_enabled       | menu.enabled                                           | `true`                                                                                 |
+| reportName        | report.name                                            | `Kubernetes Application Version Report`                                                |
+| reportScope       | report.scope                                           | `deployments replicasets statefulsets daemonsets jobs cronjobs replicationcontrollers` |
+| pathsTemplateFile | paths.templateFile                                     | `/etc/kavir/html-report-builder/templates/simple.html.j2`                              |
+| pathsStyleFile    | paths.styleFile                                        | `/etc/kavir/html-report-builder/styles/simple.css`                                     |
+| menuEnabled       | menu.enabled                                           | `true`                                                                                 |
 
 ## mandatory environment variables
 
 | variable           | equivalent in kavirs html-report-builder `config.json` |
 | ------------------ | ------------------------------------------------------ |
-| paths_srcDir       | paths.srcDir                                           |
-| paths_outDir       | paths.outDir                                           |
-| menu_linkBasePath* | menu.linkBasePath                                      |
+| pathsSrcDir       | paths.srcDir                                           |
+| pathsOutDir       | paths.outDir                                           |
+| menuLinkBasePath* | menu.linkBasePath                                      |
 
-\* menu_linkBasePath is mandatory if menu_enabled == "true"
+\* menuLinkBasePath is mandatory if menuEnabled == "true"
 
 ## Usage
 
@@ -33,9 +33,9 @@ cd ./docker/examples
 docker run \
 -v /absolute/path/to/kavir/docker/examples:/tmp/kavir/in \
 -v /var/www/kavir:/tmp/kavir/out \
--e paths_srcDir="/tmp/kavir/in" \
--e paths_outDir="/tmp/kavir/out" \
--e menu_linkBasePath="https://kavir.acme.de" \
+-e pathsSrcDir="/tmp/kavir/in" \
+-e pathsOutDir="/tmp/kavir/out" \
+-e menuLinkBasePath="https://kavir.acme.de" \
 ghcr.io/telekom-mms/kavir-html-report-builder:1.0.0
 ```
 

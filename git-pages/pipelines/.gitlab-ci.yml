@@ -5,22 +5,22 @@ pages:
   image: ghcr.io/telekom-mms/kavir-html-report-builder:1.0.0
   variables:
     ## optional env vars
-    # verbose:                       # default: true
-    # report_name:                   # default: Kubernetes Application Version Report
-    # report_scope:                  # default: deployments replicasets statefulsets daemonsets jobs cronjobs replicationcontrollers
-    # paths_templateFile:            # default: /etc/kavir-html-report-builder/templates/simple.html.j2
-    # paths_styleFile:               # default: /etc/kavir-html-report-builder/styles/simple.css
-    # menu_enabled:                  # default: true
+    # verbose:                      # default: true
+    # reportName:                   # default: Kubernetes Application Version Report
+    # reportScope:                  # default: deployments replicasets statefulsets daemonsets jobs cronjobs replicationcontrollers
+    # pathsTemplateFile:            # default: /etc/kavir-html-report-builder/templates/simple.html.j2
+    # pathsStyleFile:               # default: /etc/kavir-html-report-builder/styles/simple.css
+    # menuEnabled:                  # default: true
     ## mandatory env vars
-    paths_srcDir: kavir-csv-reports
-    paths_outDir: public             # do not change
-    menu_linkBasePath: $CI_PAGES_URL # do not change
+    pathsSrcDir: kavir-csv-reports
+    pathsOutDir: public             # do not change
+    menuLinkBasePath: $CI_PAGES_URL # do not change
   script:
-    - mkdir -p $paths_srcDir
+    - mkdir -p $pathsSrcDir
     - mkdir -p public
-    # move all folders that should be included in the html report to $paths_srcDir
-    - mv dev $paths_srcDir
-    - mv prod $paths_srcDir
+    # move all folders that should be included in the html report to $pathsSrcDir
+    - mv dev $pathsSrcDir
+    - mv prod $pathsSrcDir
     # build the html reports
     - /bin/bash /opt/kavir-html-report-builder/entrypoint.bash
     # copy (not move!) the html report that should be the landing page to public/index.html
