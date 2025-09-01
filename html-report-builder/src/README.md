@@ -1,4 +1,4 @@
-# kavir - **K**ubernetes **A**pplication **V**ers**I**on **R**eporter - html-report-builder
+# kavir - **K**ubernetes **A**pplication **V**ers**I**on **R**eporter - html-report-builder/src
 
 The html-report-builder is a python script that uses the csv files to build a html report (static html file).
 
@@ -6,9 +6,12 @@ The html-report-builder is a python script that uses the csv files to build a ht
 
 | variable     | description                                                                |
 | ------------ | -------------------------------------------------------------------------- |
-| reportName   | the name of the report that is displayed in the report header              |
+| **report**   |                                                                            |
+| name         | the name of the report that is displayed in the report header              |
+| scope        | determines which csv reports will be included in the html report           |
 | **paths**    |                                                                            |
 | srcDir       | the path to the directory which contains the folders for the html report (If the directory is a git repository keep in mind that the html-report-builder does not git pull the latest commits. You have to take care of this on your own.) |
+| templateFile | the path to the template file                                              |
 | styleFile    | the path to the style file (The content of the style file is rendered into the html report. Therefore it is not needed after the html report was created.) |
 | outDir       | the path to the directory that will contain the html report created by this script (The script does not create missing parent directories.) |
 | **menu**     |                                                                            |
@@ -28,13 +31,13 @@ The html-report-builder will use the folders inside the `srcDir` to build the re
 You can run the html-report-builder with the example files in this repository:
 
 ```bash
-python3 ./html-report-builder/main.py -c ./html-report-builder/config.json.template -n dev
-python3 ./html-report-builder/main.py -c ./html-report-builder/config.json.template -n prod
+python3 ./html-report-builder/src/main.py -c ./html-report-builder/src/config.json.template -n dev
+python3 ./html-report-builder/src/main.py -c ./html-report-builder/src/config.json.template -n prod
 ```
 
 ## html report preview
 
-Check out the `examples` folder for an example.
+Check out the `html-report-builder/examples` folder for an example.
 
 ## template variables
 
