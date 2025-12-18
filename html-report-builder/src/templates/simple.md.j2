@@ -1,0 +1,17 @@
+# {{ reportName }} ({{ clusterName }})
+{% if menuEnabled %}
+|{% for cluster in clusters %} {% if clusterName == cluster %}*{% endif %}[{{ cluster }}]({{ menuLinkBasePath }}/{{ cluster }}.md){% if clusterName == cluster %}*{% endif %} |{% endfor %}
+{% endif -%}
+
+{% for workloadResourceReport in workloadResourceReports %}
+## {{ workloadResourceReport["name"] }}
+{% if workloadResourceReport["nodata"] is defined %}
+{{ workloadResourceReport["nodata"] }}
+{% else %}
+| Name {% if workloadResourceReport["namespaces"] %} | Namespace{% endif %} | Image | Tag/Version |
+| --- {% if workloadResourceReport["namespaces"] %} | ---{% endif %} | --- | --- |
+{% for workload in workloadResourceReport["data"] -%}
+| {{ workload["name"] }}{% if workload["namespace"] is defined %} | {{ workload["namespace"] }}{% endif %} | {% for imageAndTagPair in workload["imageAndTagPairs"] %}{{ imageAndTagPair[0] }}<br />{% endfor %} | {% for imageAndTagPair in workload["imageAndTagPairs"] %}{{ imageAndTagPair[1] }}<br />{% endfor %} |
+{% endfor -%}
+{% endif -%}
+{% endfor -%}

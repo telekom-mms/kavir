@@ -1,7 +1,6 @@
-"""
-kavir - html-report-builder
-version: 2.0.0
-"""
+# https://github.com/telekom-mms/kavir
+# kavir - html-report-builder
+# version: 2.1.0
 
 import argparse, csv, json, os
 from jinja2 import Template
@@ -18,48 +17,84 @@ args = parser.parse_args()
 try:
     configParameters = json.load(open(args.config))
 except:
-    print(f"[ERR] Could not find the config file: {args.config}")
+    print(f"[ERR] An error occured while trying to load the config file: {args.config}. The config file does not exist or has syntax errors.")
     exit(1)
 clusterName = args.clusterName
 
-# config parameters from config file
+# load mandatory config parameters from config file
+configLoadErrors = []
 try:
     reportName = configParameters["report"]["name"]
-    reportScope = configParameters["report"]["scope"]
-    srcDirPath = configParameters["paths"]["srcDir"]
-    templateFilePath = configParameters["paths"]["templateFile"]
-    styleFilePath = configParameters["paths"]["styleFile"]
-    outDirPath = configParameters["paths"]["outDir"]
-    menuEnabled = configParameters["menu"]["enabled"]
-    menuLinkBasePath = configParameters["menu"]["linkBasePath"]
 except:
-    print(f"[ERR] The config file {args.config} is incomplete. Please use the provided config file template as a reference.")
+    configLoadErrors.append("report.name")
+try:
+    reportScope = configParameters["report"]["scope"]
+except:
+    configLoadErrors.append("report.scope")
+try:
+    srcDirPath = configParameters["paths"]["srcDir"]
+except:
+    configLoadErrors.append("paths.srcDir")
+try:
+    templateFilePath = configParameters["paths"]["templateFile"]
+except:
+    configLoadErrors.append("paths.templateFile")
+try:
+    outDirPath = configParameters["paths"]["outDir"]
+except:
+    configLoadErrors.append("paths.outDir")
+try:
+    menuEnabled = configParameters["menu"]["enabled"]
+except:
+    configLoadErrors.append("menu.enabled")
+
+# load config parameters from config file (mandatory requirement depends on other variables)
+if menuEnabled:
+    try:
+        menuLinkBasePath = configParameters["menu"]["linkBasePath"]
+    except:
+        configLoadErrors.append("menu.linkBasePath")
+
+# evaluate config load errors
+if configLoadErrors:
+    for parameter in configLoadErrors:
+        print(f"[ERR] The config file {args.config} is incomplete: {parameter} is missing. Please use the provided config file template as a reference.")
     exit(1)
+
+# load optional config parameters from config file
+styleFilePath = configParameters.get("paths").get("styleFile")
+
+# config parameters validation
+configValueErrors = []
+for workloadResource in reportScope:
+    if workloadResource not in ["deployments", "replicasets", "statefulsets", "daemonsets", "jobs", "cronjobs", "replicationcontrollers"]:
+        configValueErrors.append(f"[ERR] Items in report.scope array must be one of the following: deployments, replicasets, statefulsets, daemonsets, jobs, cronjobs, replicationcontrollers. '{workloadResource}' did not match.")
+if (not os.path.exists(srcDirPath)):
+    configValueErrors.append(f"[ERR] Could not find the srcDir directory: {srcDirPath}")
+if (not os.path.exists(templateFilePath)):
+    configValueErrors.append(f"[ERR] Could not find the template file: {templateFilePath}")
+templateFilePathParts = templateFilePath.split(".")
+if (len(templateFilePathParts) < 3 or os.sep in templateFilePathParts[-2] or templateFilePathParts[-1] != "j2"):
+    configValueErrors.append(f"[ERR] The template file must adhere to the following structure: <name>.<fileextension>.j2. {templateFilePath} did not match.")
+if (styleFilePath is not None and not os.path.exists(styleFilePath)):
+    configValueErrors.append(f"[ERR] Could not find the style file: {styleFilePath}")
+if (not os.path.exists(outDirPath)):
+    configValueErrors.append(f"[ERR] Could not find the outDir directory: {outDirPath}")
 
 # compound config parameters
 clusterDirPath = os.path.join(srcDirPath, clusterName)
-outFilePath = os.path.join(outDirPath, clusterName + ".html")
+outFileExtension = templateFilePathParts[-2]
+outFilePath = os.path.join(outDirPath, f"{clusterName}.{outFileExtension}")
 
-# config parameters validation
-if (not os.path.exists(srcDirPath)):
-    print(f"[ERR] Could not find the srcDir directory: {srcDirPath}")
-    exit(1)
+# compound config parameters validation
 if (not os.path.exists(clusterDirPath)):
-    print(f"[ERR] Could not find the cluster directory: {clusterDirPath}")
+    configValueErrors.append(f"[ERR] Could not find the cluster directory: {clusterDirPath}")
+
+# evaluate config value errors
+if configValueErrors:
+    for error in configValueErrors:
+        print(error)
     exit(1)
-if (not os.path.exists(templateFilePath)):
-    print(f"[ERR] Could not find the template file: {templateFilePath}")
-    exit(1)
-if (not os.path.exists(styleFilePath)):
-    print(f"[ERR] Could not find the style file: {styleFilePath}")
-    exit(1)
-if (not os.path.exists(outDirPath)):
-    print(f"[ERR] Could not find the outDir directory: {outDirPath}")
-    exit(1)
-for workloadResource in reportScope:
-    if workloadResource not in ["deployments", "replicasets", "statefulsets", "daemonsets", "jobs", "cronjobs", "replicationcontrollers"]:
-        print(f"[ERR] Items in reportScope array must be one of the following: deployments, replicasets, statefulsets, daemonsets, jobs, cronjobs, replicationcontrollers. {workloadResource} did not match.")
-        exit(1)
 
 # get the names of all clusters
 clusters = [f for f in os.listdir(srcDirPath) if os.path.isdir(os.path.join(srcDirPath, f))]
@@ -85,9 +120,12 @@ template = Template(templateFile.read())
 templateFile.close()
 
 # load style file
-styleFile = open(styleFilePath, "r")
-style = styleFile.read()
-styleFile.close()
+if styleFilePath is not None:
+    styleFile = open(styleFilePath, "r")
+    style = styleFile.read()
+    styleFile.close()
+else:
+    style = ""
 
 # load data from csv reports
 workloadResourceReports = []
@@ -115,7 +153,7 @@ for workloadResource in reportScope:
     if csvReport[0] == ["Name", "Namespace", "Image:Tag"]:
         workloadResourceReport["namespaces"] = True
     else:
-        workloadResourceReport["namespaces"] = False    
+        workloadResourceReport["namespaces"] = False
     for line in csvReport[1:]:
         data = {}
         # corner case: skip empty lines (e.g. at the end of the file)
@@ -156,4 +194,4 @@ outFile = open(outFilePath, "w")
 outFile.write(htmlReport)
 outFile.close()
 
-print(f"[INFO] Built html report for cluster {clusterName}")
+print(f"[INFO] Built {outFileExtension} report for cluster {clusterName}")
