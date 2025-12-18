@@ -5,7 +5,7 @@ cronjob:
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 1
 containerRegistry:
-  image: ghcr.io/telekom-mms/kavir:1.0.1
+  image: ghcr.io/telekom-mms/kavir:1.2.0
   dockerconfigjson: '{"auths":{"ghcr.io":{"username":"xxxxx","password":"xxxxx","email":"kavir@acme.de","auth":"xxxxx"}}}'
 git:
   repoUrl: https://git.acme.de/repo.git
