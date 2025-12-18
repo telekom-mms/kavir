@@ -1,4 +1,4 @@
-FROM python:3.13
+FROM python:3.14
 
 LABEL org.opencontainers.image.authors="I-Am-hehu" \
     org.opencontainers.image.base.name="python" \
