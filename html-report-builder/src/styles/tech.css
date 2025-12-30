@@ -1,0 +1,104 @@
+:root {
+    display: flex;
+    justify-content: center;
+    --primary: 240 3.7% 15.9%;
+    --secondary: 240 3.8% 46.1%;
+    --muted: 240 4.9% 83.9%;
+}
+
+body {
+    padding: 30px;
+    margin: 0;
+    max-width: 90vw;
+    font-family: monospace;
+    color: hsl(var(--primary));
+    font-size: 14px;
+}
+
+/* nav-bar start */
+.header {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    list-style: none;
+    color: hsl(var(--primary));
+}
+
+a {
+    display: block;
+    color: hsl(var(--secondary));
+    margin-top: 5px;
+    padding-left: 50px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    text-underline-offset: 3px;
+}
+
+a.active {
+    color: hsl(var(--primary));
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: hsl(var(--primary));
+}
+/* nav-bar end */
+
+.headline {
+    padding-left: 0px;
+}
+
+h1 {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+    margin-top: 50px;
+    margin-bottom: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+    margin-top: 7px;
+}
+
+
+/* table start */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+thead {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    color: hsl(var(--secondary));
+}
+
+.table-header-name {
+    width: 20%;
+}
+
+.table-header-namespace {
+    width: 15%;
+}
+
+.table-header-tag-version {
+    width: 15%;
+}
+
+td {
+    text-align: left;
+    padding: 10px;
+    border: 0 solid;
+    border-color: hsl(var(--muted));
+    border-bottom-width: 1px;
+}
+/* table end */
