@@ -4,19 +4,19 @@ The html-report-builder is a python script that uses the csv files to build a ht
 
 ## config.json
 
-| variable     | description                                                                |
-| ------------ | -------------------------------------------------------------------------- |
-| **report**   |                                                                            |
-| name         | the name of the report that is displayed in the report header              |
-| scope        | determines which csv reports will be included in the html report           |
-| **paths**    |                                                                            |
-| srcDir       | the path to the directory which contains the folders for the html report (If the directory is a git repository keep in mind that the html-report-builder does not git pull the latest commits. You have to take care of this on your own.) |
-| templateFile | the path to the template file                                              |
-| styleFile    | the path to the style file (The content of the style file is rendered into the html report. Therefore it is not needed after the html report was created.) |
-| outDir       | the path to the directory that will contain the html report created by this script (The script does not create missing parent directories.) |
-| **menu**     |                                                                            |
-| enabled      | indicates whether the menu is displayed in the report header               |
-| linkBasePath | the link base path that is used to build the href of the links in the menu |
+| variable             | description                                                                |
+| -------------------- | -------------------------------------------------------------------------- |
+| **report**           |                                                                            |
+| name                 | the name of the report that is displayed in the report header              |
+| scope                | determines which csv reports will be included in the html report           |
+| **paths**            |                                                                            |
+| srcDir               | the path to the directory which contains the folders for the html report (If the directory is a git repository keep in mind that the html-report-builder does not git pull the latest commits. You have to take care of this on your own.) |
+| templateFile         | the path to the template file                                              |
+| styleFile (optional) | the path to the style file (The content of the style file is rendered into the html report. Therefore it is not needed after the html report was created.) |
+| outDir               | the path to the directory that will contain the html report created by this script (The script does not create missing parent directories.) |
+| **menu**             |                                                                            |
+| enabled              | indicates whether the menu is displayed in the report header               |
+| linkBasePath         | the link base path that is used to build the href of the links in the menu |
 
 ## Usage
 
