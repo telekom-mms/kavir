@@ -1,5 +1,5 @@
 Name,Image:Tag
 cmcc-operator,ghcr.io/telekom-mms/cmcc-operator/cmcc-operator:v1.14.15
-gitea,gitea,docker.io/gitea/gitea:latest-rootless
+gitea,docker.io/gitea/gitea:latest-rootless
 my-deployment,container-registry.acme.de/deployments/my-deployment:1.0.0
 trivy-dojo-operator,ghcr.io/telekom-mms/docker-trivy-dojo-operator:0.7.2

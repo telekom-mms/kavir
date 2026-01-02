@@ -4,7 +4,7 @@
 
 * reportNamespaces: true
 * template file used: simple.html.j2
-* style file used: simple.css
+* style file used: tech.css
 
 ## dev.md
 
