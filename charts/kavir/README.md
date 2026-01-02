@@ -1,6 +1,6 @@
 # kavir - **K**ubernetes **A**pplication **V**ers**I**on **R**eporter - helm
 
-The helm chart uses the container image described in the `docker` folder to create a [kubernetes cronjob](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) inside the kubernetes cluster which periodically updates the csv files in the predefined git repository.
+The helm chart uses the container image described in the `docker/` folder to create a [kubernetes cronjob](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) inside the kubernetes cluster which periodically updates the csv files in the predefined git repository.
 
 ## values.yaml
 

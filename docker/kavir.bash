@@ -1,6 +1,7 @@
 #!/bin/bash
+# https://github.com/telekom-mms/kavir
 # kavir - docker
-# version: 1.1.0
+# version: 1.2.0
 
 declare -A reportScope
 reportScope=(

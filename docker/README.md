@@ -1,6 +1,6 @@
 # kavir - **K**ubernetes **A**pplication **V**ers**I**on **R**eporter - docker
 
-The container is based on [bitnamis kubectl container](https://github.com/bitnami/containers/tree/main/bitnami/kubectl) published under the [Apache2 License](https://www.apache.org/licenses/LICENSE-2.0). It uses a bash file which gathers information via `kubectl` and commits them as csv files to the predefined git repository.
+The container uses the `kavir.bash` script to gather information via `kubectl` and commits them as csv files to the predefined git repository.
 
 ## environment variables
 
@@ -53,7 +53,7 @@ A `cronjobs.csv` could look like this:
 
 ```csv
 Name,Image:Tag
-kavir,ghcr.io/telekom-mms/kavir:1.0.1
+kavir,ghcr.io/telekom-mms/kavir:1.2.0
 my-cronjob,container-registry.acme.de/cronjobs/my-cronjob:1.0.0
 ```
 
@@ -61,7 +61,7 @@ If `reportNamespaces` is set to `true`, the `cronjobs.csv` will look like this:
 
 ```csv
 Name,Namespace,Image:Tag
-kavir,monitoring,ghcr.io/telekom-mms/kavir:1.0.1
+kavir,monitoring,ghcr.io/telekom-mms/kavir:1.2.0
 my-cronjob,app,container-registry.acme.de/cronjobs/my-cronjob:1.0.0
 ```
 
