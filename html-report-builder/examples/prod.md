@@ -7,7 +7,7 @@
 | Name  | Image | Tag/Version |
 | ---  | --- | --- |
 | cmcc-operator | ghcr.io/telekom-mms/cmcc-operator/cmcc-operator<br /> | v1.14.15<br /> |
-| gitea | docker.io/bitnami/gitea<br /> | 1.22.3-debian-12-r0<br /> |
+| gitea | docker.io/gitea/gitea<br /> | latest-rootless<br /> |
 | my-deployment | container-registry.acme.de/deployments/my-deployment<br /> | 1.0.0<br /> |
 | trivy-dojo-operator | ghcr.io/telekom-mms/docker-trivy-dojo-operator<br /> | 0.7.2<br /> |
 
@@ -31,7 +31,7 @@ not in scope of the report
 
 | Name  | Image | Tag/Version |
 | ---  | --- | --- |
-| kavir | ghcr.io/telekom-mms/kavir<br /> | 2.0.0<br /> |
+| kavir | ghcr.io/telekom-mms/kavir<br /> | 1.2.0<br /> |
 | my-cronjob | container-registry.acme.de/cronjobs/my-cronjob<br /> | 1.0.0<br /> |
 
 ## replicationcontrollers
