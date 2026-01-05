@@ -1,5 +1,5 @@
 #!/bin/bash
-# https://github.com/telekom-mms/kavir/tree/main
+# https://github.com/telekom-mms/kavir
 
 # https://gist.github.com/mohanpedala/1e2ff5661761d3abd0385e8223e16425
 set -e
@@ -10,7 +10,7 @@ verbose=${verbose:=true}
 reportName=${reportName:=Kubernetes Application Version Report}
 reportScope=${reportScope:=deployments replicasets statefulsets daemonsets jobs cronjobs replicationcontrollers}
 pathsTemplateFile=${pathsTemplateFile:=/etc/kavir-html-report-builder/templates/simple.html.j2}
-pathsStyleFile=${pathsStyleFile:=/etc/kavir-html-report-builder/styles/simple.css}
+pathsStyleFile=${pathsStyleFile:=/etc/kavir-html-report-builder/styles/tech.css}
 menuEnabled=${menuEnabled:=true}
 
 # mandatory env vars

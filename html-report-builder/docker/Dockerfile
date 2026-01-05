@@ -2,12 +2,12 @@ FROM python:3.14
 
 LABEL org.opencontainers.image.authors="I-Am-hehu" \
     org.opencontainers.image.base.name="python" \
-    org.opencontainers.image.created="2025-08-24T16:00:00Z" \
+    org.opencontainers.image.created="2026-01-05T11:00:00Z" \
     org.opencontainers.image.description="kavirs html-report-builder is a python script that uses kavirs csv files to build a html report (static html file)." \
-    org.opencontainers.image.documentation="https://github.com/telekom-mms/kavir/tree/main" \
-    org.opencontainers.image.source="https://github.com/telekom-mms/kavir/tree/main" \
+    org.opencontainers.image.documentation="https://github.com/telekom-mms/kavir" \
+    org.opencontainers.image.source="https://github.com/telekom-mms/kavir" \
     org.opencontainers.image.title="kavir-html-report-builder" \
-    org.opencontainers.image.url="https://github.com/telekom-mms/kavir/tree/main" \
+    org.opencontainers.image.url="https://github.com/telekom-mms/kavir" \
     org.opencontainers.image.vendor="Deutsche Telekom MMS GmbH" \
     org.opencontainers.image.version="1.0.0"
 
@@ -31,5 +31,6 @@ COPY ./src/templates/simple.html.j2 /etc/kavir-html-report-builder/templates/sim
 # styles
 RUN mkdir /etc/kavir-html-report-builder/styles
 COPY ./src/styles/simple.css /etc/kavir-html-report-builder/styles/simple.css
+COPY ./src/styles/tech.css /etc/kavir-html-report-builder/styles/tech.css
 
 ENTRYPOINT ["/opt/kavir-html-report-builder/entrypoint.bash"]
