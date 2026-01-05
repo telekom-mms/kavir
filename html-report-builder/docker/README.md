@@ -41,4 +41,4 @@ ghcr.io/telekom-mms/kavir-html-report-builder:1.1.0
 
 ## releases
 
-Check the packages of this repository to view the releases of the container.
+Check the [Packages](https://github.com/orgs/telekom-mms/packages?repo_name=kavir) of this repository to view the releases of the container.
