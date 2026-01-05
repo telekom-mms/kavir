@@ -2,14 +2,14 @@
 # https://github.com/telekom-mms/kavir
 pages:
   stage: deploy
-  image: ghcr.io/telekom-mms/kavir-html-report-builder:1.0.0
+  image: ghcr.io/telekom-mms/kavir-html-report-builder:1.1.0
   variables:
     ## optional env vars
     # verbose:                      # default: true
     # reportName:                   # default: Kubernetes Application Version Report
     # reportScope:                  # default: deployments replicasets statefulsets daemonsets jobs cronjobs replicationcontrollers
     # pathsTemplateFile:            # default: /etc/kavir-html-report-builder/templates/simple.html.j2
-    # pathsStyleFile:               # default: /etc/kavir-html-report-builder/styles/simple.css
+    # pathsStyleFile:               # default: /etc/kavir-html-report-builder/styles/tech.css
     # menuEnabled:                  # default: true
     ## mandatory env vars
     pathsSrcDir: kavir-csv-reports
