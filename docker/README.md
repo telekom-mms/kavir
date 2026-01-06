@@ -24,7 +24,7 @@ The container requires several environment variables. Since kavir is meant to be
 
 ## releases
 
-Check the packages of this repository to view the releases of the container.
+Check the [packages](https://github.com/orgs/telekom-mms/packages?repo_name=kavir) of this repository to view the releases of the container.
 
 ## git repository preview
 

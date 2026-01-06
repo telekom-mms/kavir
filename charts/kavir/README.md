@@ -36,6 +36,11 @@ The helm chart uses the container image described in the `docker/` folder to cre
   * create a project access token for this git repository
     * role: Maintainer
     * scopes: write_repository
-* create `values.yaml` from `values.yaml.template`
-  * configure `values.yaml`
-* run `helm install kavir ./charts/kavir --namespace kavir --create-namespace`
+* `wget -q https://github.com/telekom-mms/kavir/releases/download/charts-kavir-2.0.1/kavir-2.0.1.tgz -O - | tar -xz`
+* `cp ./kavir/values.yaml.template ./values.yaml`
+* configure `./values.yaml`
+* `helm install kavir ./kavir --namespace kavir --create-namespace -f ./values.yaml`
+
+## releases
+
+Check the [releases](https://github.com/telekom-mms/kavir/releases) section of this repository to view the releases of the helm chart.
